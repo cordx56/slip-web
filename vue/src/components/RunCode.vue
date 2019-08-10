@@ -10,7 +10,7 @@
         b-card-text
           pre.silOutput
             code {{ stdout }}
-      b-card(title="Code tree", v-if="parseTree").my-2
+      b-card(title="Parse tree", v-if="parseTree").my-2
         b-card-text
           pre.silParseTree
             code {{ parseTree }}
@@ -32,8 +32,7 @@ println "x = " x ", y = " y ", z = " z
     x = "Hello, world!"
     println x
 }
-println "x = " x
-`,
+println "x = " x`,
       stdout: "",
       parseTree: "",
       stderr: ""
