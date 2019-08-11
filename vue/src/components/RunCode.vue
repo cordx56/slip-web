@@ -29,10 +29,12 @@ export default {
 println "x = " x ", y = " y ", z = " z
 {
     x :: string
-    x = "Hello, world!"
+    x = "Hello,"
+    x = x + " world!"
     println x
+    y = y + z
 }
-println "x = " x`,
+println "x = " x ", y = " y ", z = " z`,
       stdout: "",
       parseTree: "",
       stderr: ""
