@@ -10,6 +10,7 @@ services:
     restart: always
     command: >
       /bin/bash -c "
+      rm -rf /silang &&
       git clone -b impl-v0.1.0 https://github.com/cordx56/silang.git /silang &&
       cd /silang &&
       make DEBUG= &&
