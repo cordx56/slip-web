@@ -8,14 +8,12 @@ app = Flask(__name__)
 def runSil():
     if (not request.json["code"]):
         return jsonify({ "status": False, "stderr": "Invalid request" })
-    sil = subprocess.run(["/silang/sil", "--parseTree", "-i", request.json["code"]],
-                         stdout = subprocess.PIPE, stderr = subprocess.PIPE)
-    stdout = sil.stdout.decode("utf8")
-    stderr = sil.stderr.decode("utf8")
+    sil = subprocess.run(["/silang", "-"], input=request.json["code"],
+                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    stdout = sil.stdout
+    stderr = sil.stderr
     if len(stderr) == 0:
-        parseTree = stdout.split("\n\n")[0]
-        stdout = "\n\n".join(stdout.split("\n\n")[1:])
-        return jsonify({ "status": True, "stdout": stdout, "parseTree": parseTree })
+        return jsonify({ "status": True, "stdout": stdout })
     else:
         return jsonify({ "status": False, "stderr": stderr })
 

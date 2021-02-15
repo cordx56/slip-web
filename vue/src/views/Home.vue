@@ -4,7 +4,7 @@
       b-container
         h1 SILang
         h3 Simple Interpreter Language  <small class="text-secondary">beta</small>
-        h5.text-secondary v0.1.0-beta, Codename: Atlas
+        h5.text-secondary v0.2.0-beta
     b-container
       h4 What can I do with SILang?
       h5 Try SILang coding!
