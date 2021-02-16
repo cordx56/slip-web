@@ -25,17 +25,22 @@ export default {
   name: 'RunCode',
   data() {
     return {
-      code: `= (:: (x y z) (float float float)) (1.2 2.3 3.4)
+      code: `= (:: helloworld function) {
+    return "Hello, world!"
+}
+
+= (:: (x y z) (float float float)) (1.2 2.3 3.4)
 println "x = " x ", y = " y ", z = " z
 {
     :: x string
     = x "Hello"
-    print x
     = (:: y string) ", world!"
-    println y
+    println x y
+    = z 3.14
 }
 println "x = " x ", y = " y ", z = " z
-`,
+
+println (helloworld)`,
       stdout: "",
       parseTree: "",
       stderr: ""
