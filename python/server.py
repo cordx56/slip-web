@@ -13,7 +13,9 @@ def runSil():
     stdout = sil.stdout
     stderr = sil.stderr
     if len(stderr) == 0:
-        return jsonify({ "status": True, "stdout": stdout })
+        pt = subprocess.run(["/silang", "-", "--parseTree"], input=request.json["code"],
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        return jsonify({ "status": True, "stdout": stdout, "parseTree": pt.stdout })
     else:
         return jsonify({ "status": False, "stderr": stderr })
 

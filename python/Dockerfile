@@ -1,8 +1,7 @@
 FROM rust:1.50 as builder
 WORKDIR /app
-RUN git clone -b rust https://github.com/cordx56/silang.git /silang && \
-    cd /silang && \
-    cargo install --path .
+COPY silang .
+RUN cargo install --path .
 
 
 FROM python:3.9

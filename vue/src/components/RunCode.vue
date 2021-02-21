@@ -25,7 +25,7 @@ export default {
   name: 'RunCode',
   data() {
     return {
-      code: `= (:: helloworld function) {
+      code: `f: helloworld {
     return "Hello, world!"
 }
 
@@ -35,7 +35,7 @@ println "x = " x ", y = " y ", z = " z
     :: x string
     = x "Hello"
     = (:: y string) ", world!"
-    println x y
+    println (+ x y)
     = z 3.14
 }
 println "x = " x ", y = " y ", z = " z
