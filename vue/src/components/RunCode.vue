@@ -25,8 +25,11 @@ export default {
   name: 'RunCode',
   data() {
     return {
-      code: `f: helloworld {
-    return "Hello, world!"
+      code: `f: gcd ((:: a int) (:: b int)) {
+    if (== b 0) {
+        return (value a)
+    }
+    return (gcd (value b) (% a b))
 }
 
 = (:: (x y z) (float float float)) (1.2 2.3 3.4)
@@ -40,7 +43,7 @@ println "x = " x ", y = " y ", z = " z
 }
 println "x = " x ", y = " y ", z = " z
 
-println (helloworld)`,
+println (gcd 256 56)`,
       stdout: "",
       parseTree: "",
       stderr: ""
