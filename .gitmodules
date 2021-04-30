@@ -1,3 +1,6 @@
 [submodule "python/silang"]
 	path = python/silang
 	url = https://github.com/cordx56/silang.git
+[submodule "python/silang-math"]
+	path = python/silang-math
+	url = https://github.com/cordx56/silang-math.git

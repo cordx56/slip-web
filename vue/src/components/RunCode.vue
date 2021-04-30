@@ -43,7 +43,10 @@ println "x = " x ", y = " y ", z = " z
 }
 println "x = " x ", y = " y ", z = " z
 
-println (gcd 256 56)`,
+println (gcd 256 56)
+
+import "math"
+println math.PI`,
       stdout: "",
       parseTree: "",
       stderr: ""
