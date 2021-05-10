@@ -10,7 +10,7 @@
         b-card-text
           pre.slipOutput
             code {{ stdout }}
-      b-card(title="Parse tree", v-if="parseTree").my-2
+      b-card(title="LLVM IR", v-if="llvmir").my-2
         b-card-text
           pre.slipllvmir
             code {{ llvmir }}
