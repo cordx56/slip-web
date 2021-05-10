@@ -29,7 +29,7 @@ export default {
 (print "Hello, world!")
 (print (add 32 24))`,
       stdout: "",
-      parseTree: "",
+      llvmir: "",
       stderr: ""
     }
   },
@@ -37,7 +37,7 @@ export default {
     runCode(evt) {
       evt.preventDefault()
       this.stdout = ""
-      this.parseTree = ""
+      this.llvmir = ""
       this.stderr = ""
       this.$axios.post("/api/run", { code: this.code }).then((response) => {
         if (response.data.status) {
