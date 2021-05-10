@@ -1,4 +1,4 @@
-# silang-web
+# slip-web
 
 ## Project setup
 ```

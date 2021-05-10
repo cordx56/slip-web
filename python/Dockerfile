@@ -1,12 +1,17 @@
 FROM rust:1.50 as builder
 WORKDIR /app
-COPY silang silang/
-RUN cd silang && \
-    cargo install --path .
+RUN apt update && \
+    apt install -y lsb-release wget software-properties-common && \
+    wget https://apt.llvm.org/llvm.sh && \
+    chmod +x llvm.sh && \
+    ./llvm.sh 11 && \
+    rm llvm.sh
 
-COPY silang-math silang-math/
-RUN cd silang-math && \
-    cargo build --release
+ENV LLVM_SYS_110_PREFIX /usr/lib/llvm-11
+
+COPY slip .
+
+RUN cargo install --path .
 
 
 FROM python:3.9
@@ -16,7 +21,6 @@ COPY Pipfile.lock .
 RUN pip install pipenv && \
     pipenv install --system
 COPY . .
-COPY --from=builder /usr/local/cargo/bin/silang /silang/
-COPY --from=builder /app/silang-math/target/release/libmath.so /app/math.so
+COPY --from=builder /usr/local/cargo/bin/slip /slip/
 
 CMD gunicorn -c gunicorn.py server:app

@@ -1,6 +1,3 @@
-[submodule "python/silang"]
-	path = python/silang
-	url = https://github.com/cordx56/silang.git
-[submodule "python/silang-math"]
-	path = python/silang-math
-	url = https://github.com/cordx56/silang-math.git
+[submodule "python/slip"]
+	path = python/slip
+	url = https://github.com/cordx56/slip.git

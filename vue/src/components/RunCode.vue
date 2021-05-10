@@ -8,15 +8,15 @@
     #runCodeResult
       b-card(title="Output", v-if="stdout").my-2
         b-card-text
-          pre.silOutput
+          pre.slipOutput
             code {{ stdout }}
       b-card(title="Parse tree", v-if="parseTree").my-2
         b-card-text
-          pre.silParseTree
-            code {{ parseTree }}
+          pre.slipllvmir
+            code {{ llvmir }}
       b-card(title="Error", v-if="stderr").my-2
         b-card-text
-          pre.silErr
+          pre.slipErr
             code {{ stderr }}
 </template>
 
@@ -25,28 +25,9 @@ export default {
   name: 'RunCode',
   data() {
     return {
-      code: `f: gcd ((:: a int) (:: b int)) {
-    if (== b 0) {
-        return (value a)
-    }
-    return (gcd (value b) (% a b))
-}
-
-= (:: (x y z) (float float float)) (1.2 2.3 3.4)
-println "x = " x ", y = " y ", z = " z
-{
-    :: x string
-    = x "Hello"
-    = (:: y string) ", world!"
-    println (+ x y)
-    = z 3.14
-}
-println "x = " x ", y = " y ", z = " z
-
-println (gcd 256 56)
-
-import "math"
-println math.PI`,
+      code: `(defun add (arg1 arg2) (+ arg1 arg2))
+(print "Hello, world!")
+(print (add 32 24))`,
       stdout: "",
       parseTree: "",
       stderr: ""
@@ -61,7 +42,7 @@ println math.PI`,
       this.$axios.post("/api/run", { code: this.code }).then((response) => {
         if (response.data.status) {
           this.stdout = response.data.stdout
-          this.parseTree = response.data.parseTree
+          this.llvmir = response.data.llvmir
         } else {
           this.stderr = response.data.stderr
         }
