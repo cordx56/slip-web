@@ -25,9 +25,12 @@ export default {
   name: 'RunCode',
   data() {
     return {
-      code: `(defun add (arg1 arg2) (+ arg1 arg2))
+      code: `(defun gcd (a b)
+  (if (equal b 0)
+    a
+    (gcd b (mod a b))))
 (print "Hello, world!")
-(print (add 32 24))`,
+(print (gcd 256 56))`,
       stdout: "",
       llvmir: "",
       stderr: ""
