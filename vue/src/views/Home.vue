@@ -8,6 +8,9 @@
     b-container
       h4 What can I do with slip?
       h5 Try slip coding!
+      p
+        | Implemented functions: 
+        a(href="https://github.com/cordx56/slip/wiki/Implementation-progress", target="_blank") Implementation Progress
       RunCode
 </template>
 
